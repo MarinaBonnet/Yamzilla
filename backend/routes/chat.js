@@ -6,6 +6,7 @@ const router = express.Router();
 // Enregistrer un message
 
 router.post("/", async (req, res) => {
+  console.log("BODY RECU :", req.body);
   const { userId, sender, message } = req.body;
 
   const msg = await ChatMessage.create({

@@ -16,12 +16,14 @@ import { updateDebugPanel } from "./debug.js";
  */
 export default function setupComboClickHandlers(
   currentPlayerRef,
-  playedCombos
+  playedCombos,
 ) {
   for (const list of document.querySelectorAll(".combo-list")) {
     list.addEventListener("click", (e) => {
-      const item = e.target;
-      const combo = item.dataset.combo;
+      const li = e.target.closest("li");
+      if (!li) return;
+
+      const combo = li.dataset.combo;
       const currentPlayer = currentPlayerRef.value;
 
       // Vérifie que la combo est valide et non déjà jouée
@@ -29,7 +31,7 @@ export default function setupComboClickHandlers(
 
       // Récupère les valeurs des dés
       const diceValues = Array.from(document.querySelectorAll(".die")).map(
-        (d) => safeParseInt(d.dataset.value)
+        (d) => safeParseInt(d.dataset.value),
       );
 
       // Calcule les points pour la combinaison

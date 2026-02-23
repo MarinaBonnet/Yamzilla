@@ -72,7 +72,7 @@ export const setupChat = (currentPlayerRef) => {
 
   // Charger l'historique du joueur
 
-  const userId = "player1"; // plus tard on mettre un vrai ID
+  const userId = "player1"; // plus tard  mettre un vrai ID
   loadChatHistory(userId).then((history) => {
     history.forEach((msg) => {
       const color = msg.sender === "user" ? playerColors[1] : playerColors[2];
